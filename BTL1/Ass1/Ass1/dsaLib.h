@@ -31,12 +31,24 @@ public:
     string& getErrorText() { return _text; }
 };
 
+struct mListItem {
+public:
+    virtual void printThis() = 0;
+};
+
 template <class T>
 struct L1Item {
     T data;
     L1Item<T> *pNext;
     L1Item() : pNext(NULL) {}
     L1Item(T &a) : data(a), pNext(NULL) {}
+    
+public:
+    void printData(){
+//        cout << "Here's yo data";
+        mListItem* a = &data;
+        a -> printThis();
+    }
 };
 
 template <class T>
@@ -76,6 +88,14 @@ public:
     void    traverse(void (*op)(T&, void*), void* pParam) {
         // TODO: Your code goes here
     }
+    void    printList(){
+        L1Item<T>* temp= new L1Item<T>;
+        temp = _pHead;
+        while(temp != nullptr){
+            temp -> printData();
+            temp = temp -> pNext;
+        }
+    }
     
 //    L1Item<T>*  getPos(int pos){
 //        L1Item<T>* cur = moveTo(pos);
@@ -87,12 +107,26 @@ public:
         return cur;
     }
     
-    L1Item<T>*  moveTo(int pos) {
+    L1Item<T>*  getTail(){
         L1Item<T>* cur = _pHead;
         if(cur != NULL){
             while(true){
                 if(cur -> pNext != NULL){
                     cur = cur -> pNext;
+                } else break;
+            }
+        }
+        return cur;
+    }
+    
+    L1Item<T>*  moveTo(int pos) {
+        L1Item<T>* cur = _pHead;
+        int count = pos;
+        if(cur != NULL){
+            while(count > 0){
+                if(cur -> pNext != NULL){
+                    cur = cur -> pNext;
+                    count --;
                 } else break;
             }
         }
@@ -117,15 +151,30 @@ int L1List<T>::remove(int i) {
 /// Return 0 if success, -1 otherwise
 template <class T>
 int L1List<T>::push_back(T &a) {
-    // TODO: Your code goes here
-    L1Item<T>* temp = moveTo(_size);
-    if(temp != NULL){
-        L1Item<T>* newNode = new L1Item<T>;
-        newNode -> data = a;
-        temp -> pNext = newNode;
-    } else {
-        L1Item<T>* newNode = new L1Item<T>;
-        temp = newNode;
+    
+    
+//    if(temp != NULL){
+//        L1Item<T>* newNode = new L1Item<T>;
+//        newNode -> data = a;
+//        temp -> pNext = newNode;
+//    } else {
+//        L1Item<T>* newNode = new L1Item<T>;
+//        temp = newNode;
+//    }
+    
+    L1Item<T>* temp = new L1Item<T>;
+    L1Item<T>* tail = getTail();
+    temp->data=a;
+    temp->pNext = NULL;
+    if(_pHead==NULL)
+    {
+      _pHead=temp;
+      temp=NULL;
+    }
+    else
+    {
+      tail.
+      tail=temp;
     }
     return 0;
 }

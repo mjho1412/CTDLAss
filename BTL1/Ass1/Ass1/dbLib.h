@@ -22,10 +22,11 @@
 
 #include "dsaLib.h"
 
+
 /* TODO: Please design your data structure carefully so that you can work with the given dataset
  *       in this assignment. The below structures are just some suggestions.
  */
-struct TCity {
+struct TCity: public mListItem {
     // The structure to store city information
     int id;
     string name;
@@ -35,12 +36,27 @@ struct TCity {
     string country;
     string country_state;
     
-    void printCity(){
+public:
+    void printThis(){
         cout << name;
     }
     
+    
 //    TCity(int a, string b, string c, int d, string e, string f, string g): id(a), name(b), coords(c), start_year(d), url_name(e), country(f), country_state(g) {}
 };
+
+class MLC {
+public:
+    virtual void p() = 0;
+};
+
+class ABC: public MLC {
+public:
+    virtual void p(){
+        cout << "aab";
+    }
+};
+
 
 struct TLine {
     // The structure to store line information
@@ -58,5 +74,8 @@ class TDataset {
 
 void LoadData(void *&);
 void ReleaseData(void *&);
+
+// My datas
+extern L1List<TCity>* cityList;
 
 #endif //DSA191_A1_DBLIB_H

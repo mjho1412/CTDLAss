@@ -12,6 +12,7 @@
 #include "processData.h"
 #include "dbLib.h"
 #include "regex"
+#include "dbLib.h"
 
 /* TODO: You can implement methods, functions that support your data structures here.
  * */
@@ -61,15 +62,14 @@ command_code separateByExpression(const char* command){
 }
 
 void countLineNum(){
-    L1List<TCity>* abc = static_cast<L1List<TCity>*>(malloc(sizeof(mData)));
+//    L1List<TCity>* abc = static_cast<L1List<TCity>*>(malloc(sizeof(mData)));
 //    L1Item<TCity>* bc = abc.moveTo(1);
 //    TCity* test = bc.data;
     
 //    TCity c = TCity{12, "b", "DSFsdf", 23, "Dsfsdf", "YTUYT", "fdgdfg"};
 //    abc -> push_back(c);
-    abc -> moveTo(1) -> data.printCity();
-    
-    
+//    abc -> moveTo(1) -> data.printCity();
+    cityList -> printList();
 }
 
 void countLineNumByCity(const char* pRequest){

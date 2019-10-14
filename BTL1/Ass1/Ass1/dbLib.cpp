@@ -14,17 +14,23 @@
 /* TODO: You can implement methods, functions that support your data structures here.
  * */
 
+L1List<TCity>* cityList;
+
 void LoadData(void *& list){
     
-    L1List<TCity>* cityList = new L1List<TCity>;
-//    L1List<TCity>* mStruct = cityList;
+//    cityList = new L1List<TCity>;
+    cityList = new L1List<TCity>;
     list = cityList;
-    TCity a = TCity{12, "dsf", "DSFsdf", 23, "Dsfsdf", "YTUYT", "fdgdfg"};
-    TCity b = TCity{12, "a", "DSFsdf", 23, "Dsfsdf", "YTUYT", "fdgdfg"};
-    TCity c = TCity{12, "b", "DSFsdf", 23, "Dsfsdf", "YTUYT", "fdgdfg"};
+//    TCity a = TCity{12, "dsf", "DSFsdf", 23, "Dsfsdf", "YTUYT", "fdgdfg"};
+//    TCity b = TCity{12, "a", "DSFsdf", 23, "Dsfsdf", "YTUYT", "fdgdfg"};
+//    TCity c = TCity{12, "b", "DSFsdf", 23, "Dsfsdf", "YTUYT", "fdgdfg"};
+    TCity a = TCity();
+    a.name = "Mjho";
     cityList -> push_back(a);
-    cityList -> push_back(b);
-    cityList -> push_back(c);
+    
+    
+//    cityList -> push_back(b);
+//    cityList -> push_back(c);
     
 }
 
